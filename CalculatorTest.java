@@ -4,17 +4,13 @@ import java.net.URL;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.remote.MobileCapabilityType;
-
-
 import org.openqa.selenium.remote.DesiredCapabilities;
 public class CalculatorTest {
 	static AppiumDriver<MobileElement> driver;
-
 	public static void main(String[] args) throws MalformedURLException, InterruptedException {
 		DesiredCapabilities  cap = new DesiredCapabilities();
 		cap.setCapability(MobileCapabilityType.PLATFORM_NAME,"ANDROID");
@@ -32,11 +28,9 @@ public class CalculatorTest {
 			MobileElement location=driver.findElementById("com.android.permissioncontroller:id/permission_allow_foreground_only_button");
 			if(location.isDisplayed()) {
 				location.click();
-			}
-			
-			
-		}catch(NoSuchElementException e) {
-			
+			}	
+		}
+		catch(NoSuchElementException e) {
 			System.out.println("element not found");
 		}
 		finally {
@@ -53,10 +47,10 @@ public class CalculatorTest {
 				driver.executeScript("mobile: pressKey", Map.ofEntries(Map.entry("keycode", 4)));
 				driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 				Signup.click();
-			}catch(Exception e){
+			}
+			catch(Exception e){
 				System.out.println("Execution Continues");
 			}
-			
 			driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
 			MobileElement otp=driver.findElementById("com.bluboy.android.test:id/pinView");
 			otp.sendKeys("1111");
@@ -74,7 +68,6 @@ public class CalculatorTest {
 			MobileElement Submit=driver.findElementById("com.bluboy.android.test:id/btnSubmit");
 			Submit.click();
 			}
-	
 			catch(NoSuchElementException e) {
 				System.out.println("Element Not Found");
 			}
